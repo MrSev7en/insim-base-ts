@@ -15,8 +15,8 @@ export class TestLayout {
       .setTitle(`^7made by: ^0Mr^7Sev^07^7en`)
       .setWidth(50)
       .setHeight(5)
-      .setTop(190)
       .setLeft(5)
+      .setTop(190)
       .setPlayer(player.uniqueId)
       .create();
   }
@@ -28,8 +28,8 @@ export class TestLayout {
       .setTitle(`^7insim-base-ts`)
       .setWidth(50)
       .setHeight(5)
-      .setTop(20)
       .setLeft(75)
+      .setTop(20)
       .setPlayer(player.uniqueId)
       .create();
 
@@ -39,8 +39,8 @@ export class TestLayout {
       .setTitle(`^1${player.speedKph}km/h`)
       .setWidth(50)
       .setHeight(5)
-      .setTop(25)
       .setLeft(75)
+      .setTop(25)
       .setPlayer(player.uniqueId)
       .create();
   }
@@ -58,9 +58,10 @@ export class TestLayout {
       .setTitle('^7Counter: ^60')
       .setWidth(50)
       .setHeight(5)
-      .setTop(30)
       .setLeft(75)
+      .setTop(30)
       .setPlayer(player.uniqueId)
+      .create()
       .onClick(({ button, stopPropagation }) => {
         if (counter++ < 10) {
           button.setTitle(`^7Counter: ^6${counter}`);
@@ -68,8 +69,7 @@ export class TestLayout {
           stopPropagation();
           button.setTitle('^1Counter max!');
         }
-      })
-      .create();
+      });
 
     new Button()
       .setId(4)
@@ -81,17 +81,17 @@ export class TestLayout {
       .setTitle(player.translate('buttons.click-me'))
       .setWidth(50)
       .setHeight(5)
-      .setTop(35)
       .setLeft(75)
+      .setTop(35)
       .setPlayer(player.uniqueId)
       .setClickOnce(true)
+      .create()
       .onClick(() =>
         new Message()
           .setText('^6---------------- YIKES ----------------')
           .setSound(MessageSound.SND_MESSAGE)
           .setPlayer(player.uniqueId)
           .send(),
-      )
-      .create();
+      );
   }
 }

@@ -163,9 +163,9 @@ export class Event {
   }
 
   private onPlayerConnectHandler(packet: IS_NCN): void {
-    const exists =
-      Player.players.findIndex((player) => player.uniqueId === packet.UCID) !==
-      -1;
+    const exists = Player.players.find(
+      (player) => player.uniqueId === packet.UCID,
+    );
 
     if (!exists && packet.UName) {
       const player = new Player();
@@ -183,12 +183,12 @@ export class Event {
   }
 
   private onPlayerDetailsHandler(packet: IS_NCI): void {
-    const index = Player.players.findIndex(
+    const player = Player.players.find(
       (player) => player.uniqueId === packet.UCID,
     );
 
-    if (index !== -1) {
-      Player.players[index]
+    if (player) {
+      player
         .setIpAddress(packet.IPAddress)
         .setLanguage(packet.Language)
         .setLicense(packet.License);
@@ -201,19 +201,19 @@ export class Event {
     );
 
     if (index !== -1) {
-      Player.players = Player.players.splice(index, 1);
+      Player.players.splice(index, 1);
     }
   }
 
   private onPlayerJoinHandler(packet: IS_NPL): void {
-    const index = Player.players.findIndex(
+    const player = Player.players.find(
       (player) =>
         (player.uniqueId > 0 && player.uniqueId === packet.UCID) ||
         (player.playerId > 0 && player.playerId === packet.PLID),
     );
 
-    if (index !== -1) {
-      Player.players[index]
+    if (player) {
+      player
         .setPlayerId(packet.PLID)
         .setPlate(packet.Plate)
         .setPlayerType(packet.PType)
@@ -238,55 +238,53 @@ export class Event {
   }
 
   private onPlayerPitHandler(packet: IS_PLP): void {
-    const index = Player.players.findIndex(
+    const player = Player.players.find(
       (player) => player.playerId > 0 && player.playerId === packet.PLID,
     );
 
-    if (index !== -1) {
-      Player.players[index].setPlayerId(-1).setPitStatus('PIT');
+    if (player) {
+      player.setPlayerId(-1).setPitStatus('PIT');
     }
   }
 
   private onPlayerSpectateHandler(packet: IS_PLL): void {
-    const index = Player.players.findIndex(
+    const player = Player.players.find(
       (player) => player.playerId > 0 && player.playerId === packet.PLID,
     );
 
-    if (index !== -1) {
-      Player.players[index].setPlayerId(-1).setPitStatus('SPECTATE');
+    if (player) {
+      player.setPlayerId(-1).setPitStatus('SPECTATE');
     }
   }
 
   private onPlayerChangeHandler(packet: IS_TOC): void {
-    const index = Player.players.findIndex(
+    const player = Player.players.find(
       (player) => player.uniqueId === packet.OldUCID,
     );
 
-    if (index !== -1) {
-      Player.players[index]
-        .setUniqueId(packet.NewUCID)
-        .setPlayerId(packet.PLID);
+    if (player) {
+      player.setUniqueId(packet.NewUCID).setPlayerId(packet.PLID);
     }
   }
 
   private onPlayerRenameHandler(packet: IS_CPR): void {
-    const index = Player.players.findIndex(
+    const player = Player.players.find(
       (player) => player.uniqueId === packet.UCID,
     );
 
-    if (index !== -1) {
-      Player.players[index].setName(packet.PName).setPlate(packet.Plate);
+    if (player) {
+      player.setName(packet.PName).setPlate(packet.Plate);
     }
   }
 
   private onCarMovementHandler(packet: IS_MCI): void {
     for (const info of packet.Info) {
-      const index = Player.players.findIndex(
+      const player = Player.players.find(
         (player) => player.playerId > 0 && player.playerId === info.PLID,
       );
 
-      if (index !== -1) {
-        Player.players[index]
+      if (player) {
+        player
           .setPositionX(Math.floor(info.X / 65536))
           .setPositionY(Math.floor(info.Y / 65536))
           .setPositionZ(Math.floor(info.Z / 65536))
