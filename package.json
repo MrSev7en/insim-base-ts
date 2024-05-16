@@ -1,0 +1,48 @@
+{
+  "name": "insim-base-ts",
+  "version": "0.0.0",
+  "author": "MrSev7en <https://github.com/MrSev7en/>",
+  "repository": "https://github.com/MrSev7en/insim-base-ts/",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">= 20.0.0"
+  },
+  "imports": {
+    "#core/*": "./dist/plugins/core/*.js",
+    "#events/*": "./dist/plugins/events/*.js",
+    "#layouts/*": "./dist/plugins/layouts/*.js",
+    "#insim": "./dist/src/insim.js",
+    "#button": "./dist/src/interfaces/button.js",
+    "#message": "./dist/src/interfaces/message.js",
+    "#i18n": "./dist/src/lib/i18n.js",
+    "#lib/*": "./dist/src/lib/*.js",
+    "#event": "./dist/src/lib/event.js",
+    "#logger": "./dist/src/lib/logger.js",
+    "#utils": "./dist/src/lib/utils.js"
+  },
+  "scripts": {
+    "build": "rimraf -rf dist && tsup",
+    "start": "node ./dist/src/insim.js",
+    "dev": "rimraf -rf dist && tsup --watch --onSuccess=\"node ./dist/src/insim.js\""
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "i18n-js": "^4.4.3",
+    "node-insim": "^4.1.3",
+    "pino": "^9.1.0",
+    "pino-pretty": "^11.0.0",
+    "tsup": "^8.0.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.2.0",
+    "@types/node": "^20.12.12",
+    "eslint": "^9.2.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "globals": "^15.2.0",
+    "rimraf": "^5.0.7",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.9.0"
+  }
+}

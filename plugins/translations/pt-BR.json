@@ -1,0 +1,18 @@
+{
+  "pt-BR": {
+    "join": "^7Olá, ^6%{name} ^7como você está?",
+    "buttons": {
+      "click-me": "Clique aqui!"
+    },
+    "commands": {
+      "help": {
+        "primary": "^2Esse é o comando de ajuda!",
+        "secondary": "^6Comandos disponíveis: ^1!closer <distancia?> ^2!howoldareme <idade?> ^5!raposa"
+      },
+      "closer": "^6Jogadores por perto: ^2%{names}",
+      "multilingual": {
+        "name": "raposa"
+      }
+    }
+  }
+}

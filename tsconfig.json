@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "rootDir": ".",
+    "outDir": "./dist",
+    "declaration": true,
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "resolveJsonModule": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "paths": {
+      "#core/*": ["./plugins/core/*"],
+      "#events/*": ["./plugins/events/*"],
+      "#layouts/*": ["./plugins/layouts/*"],
+      "#insim": ["./src/insim.ts"],
+      "#button": ["./src/interfaces/button.ts"],
+      "#message": ["./src/interfaces/message.ts"],
+      "#i18n": ["./src/lib/i18n.ts"],
+      "#lib/*": ["./src/lib/*"],
+      "#event": ["./src/lib/event.ts"],
+      "#logger": ["./src/lib/logger.ts"],
+      "#utils": ["./src/lib/utils.ts"]
+    }
+  },
+  "include": ["./plugins/**/*", "./src/**/*"],
+  "exclude": ["dist", "node_modules"]
+}

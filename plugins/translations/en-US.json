@@ -1,0 +1,18 @@
+{
+  "en-US": {
+    "join": "^7Hello, ^6%{name} ^7how are you?",
+    "buttons": {
+      "click-me": "Click here!"
+    },
+    "commands": {
+      "help": {
+        "primary": "^2This is the help command!",
+        "secondary": "^6Available commands: ^1!closer <radius?> ^2!howoldareme <age?> ^5!foxy"
+      },
+      "closer": "^6Next players: ^2%{names}",
+      "multilingual": {
+        "name": "foxy"
+      }
+    }
+  }
+}
